@@ -2,17 +2,18 @@
  
 ## Introduction
 
-__Kerberos__ is a protocol for authenticating service requests. It works on the basis of tickets.
-The Authentication Process
-1. The user requests the service and sends a request for ticket-granting ticket (TGT) to the Kerberos authentication server (AS).
-2. The AS verifies the user's identity and send back an encrypted TGT 
-3. The user decrypts the TGT and sends it to the ticket-granting server (TGS) for a service ticket.
-4. The TGS verifies the TGT and send a service ticket back.
-5. The user receives the service ticket and sends it to the service server.
-6. Now the client can acces the requested service
+__Kerberos__ authentication process involves the following steps:
+
+1- The user requests a service and sends a request for a ticket-granting ticket (TGT) to the Kerberos authentication server (AS).
+2- The AS verifies the user's identity, creates an encrypted TGT containing the user's identity and a secret key, and sends it back to the user.
+3- The user decrypts the TGT using their password and sends it to the ticket-granting server (TGS) to request a service ticket.
+4- The TGS verifies the TGT and issues a service ticket encrypted with a session key known only to the user and the TGS.
+5- The user receives the service ticket and sends it to the service server along with a timestamp and authenticator, which proves the user's identity.
+6- The service server verifies the authenticity of the service ticket and authenticator, and if they match, grants the requested service to the user.
+7- The use of encryption and session keys ensures that only the user and the relevant servers have access to sensitive information, making Kerberos a secure authentication protocol.
 ![Kerberos](images/intro/Kerberos_process.png)
 
-__PostgreSQL__ is a well known relational database management system that uses SQL and is known for its performance, scalability, reliability, and security.
+__PostgreSQL__ is an open-source relational database management system (RDBMS) that is widely used for managing and storing structured data. It was first released in 1995 and has since become one of the most popular database systems available, it is a well known relational database management system that uses SQL and is known for its performance, scalability, reliability, and security.
 
 ## 1- Changing Hostnames
 
@@ -299,4 +300,4 @@ Now we can check the client's tickets so we can verify that we have the ST (serv
 [Asma Smida](https://github.com/asmaSmida)
 [idriss Khaled](https://github.com/idrisskhaled)
 [Salma Yahyaoui](https://github.com/yahyaouisalma82)
-[Fares Garrach]()
+[Fares Garrach](https://github.com/GarrachFares)
