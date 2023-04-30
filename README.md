@@ -4,13 +4,13 @@
 
 __Kerberos__ authentication process involves the following steps:
 
-1- The user requests a service and sends a request for a ticket-granting ticket (TGT) to the Kerberos authentication server (AS).
-2- The AS verifies the user's identity, creates an encrypted TGT containing the user's identity and a secret key, and sends it back to the user.
-3- The user decrypts the TGT using their password and sends it to the ticket-granting server (TGS) to request a service ticket.
-4- The TGS verifies the TGT and issues a service ticket encrypted with a session key known only to the user and the TGS.
-5- The user receives the service ticket and sends it to the service server along with a timestamp and authenticator, which proves the user's identity.
-6- The service server verifies the authenticity of the service ticket and authenticator, and if they match, grants the requested service to the user.
-7- The use of encryption and session keys ensures that only the user and the relevant servers have access to sensitive information, making Kerberos a secure authentication protocol.
+1- The user requests a service and sends a request for a ticket-granting ticket (TGT) to the Kerberos authentication server (AS).<br>
+2- The AS verifies the user's identity, creates an encrypted TGT containing the user's identity and a secret key, and sends it back to the user.<br>
+3- The user decrypts the TGT using their password and sends it to the ticket-granting server (TGS) to request a service ticket.<br>
+4- The TGS verifies the TGT and issues a service ticket encrypted with a session key known only to the user and the TGS.<br>
+5- The user receives the service ticket and sends it to the service server along with a timestamp and authenticator, which proves the user's identity.<br>
+6- The service server verifies the authenticity of the service ticket and authenticator, and if they match, grants the requested service to the user.<br>
+7- The use of encryption and session keys ensures that only the user and the relevant servers have access to sensitive information, making Kerberos a secure authentication protocol.<br>
 ![Kerberos](images/intro/Kerberos_process.png)
 
 __PostgreSQL__ is an open-source relational database management system (RDBMS) that is widely used for managing and storing structured data. It was first released in 1995 and has since become one of the most popular database systems available, it is a well known relational database management system that uses SQL and is known for its performance, scalability, reliability, and security.
@@ -38,9 +38,9 @@ hostname -I
 ```
 ```
 In our case the IP adresses found are :
-KDC: 192.168.56.104
-Service: 192.168.56.105
-Client: 192.168.56.106
+KDC: 192.168.56.103
+Service: 192.168.56.104
+Client: 192.168.56.105
 ```
 
 > **Note** : All 3 machines need to have a Host-only Adapter.
@@ -55,9 +55,9 @@ sudo gedit /etc/hosts
 ```
 and we add these 3 lines in the /etc/hosts file for all of 3 machines
 ```
-192.168.56.104  kdc.insat.tn kdc
-192.168.56.105  pg.insat.tn pg
-192.168.56.106  client.insat.tn client
+192.168.56.103  kdc.insat.tn kdc
+192.168.56.104  pg.insat.tn pg
+192.168.56.105  client.insat.tn client
 ```
 
 ![Changing /etc/hosts](images/etc_hosts/etc_hosts.png)
@@ -235,7 +235,7 @@ grant all privileges on database idriss to idriss;
 Now we need to configure the "/etc/postgresql/12/main/postgresql.conf" file to change those two line
 ```
 listen_addresses = '*'
-krb_server_keyfile = '/home/idriss/pgsql/data/postgres.keytab'
+krb_server_keyfile ='/home/idriss/pgsql/data/postgres.keytab'
 ```
 ![postgres db](images/postgresql/2.png)
 
@@ -297,7 +297,7 @@ Now we can check the client's tickets so we can verify that we have the ST (serv
 ----
 ## Contributors
 
-[Asma Smida](https://github.com/asmaSmida)
-[idriss Khaled](https://github.com/idrisskhaled)
-[Salma Yahyaoui](https://github.com/yahyaouisalma82)
-[Fares Garrach](https://github.com/GarrachFares)
+[Asma Smida](https://github.com/asmaSmida) |
+[Idriss Khaled](https://github.com/idrisskhaled) |
+[Salma Yahyaoui](https://github.com/yahyaouisalma82) |
+[Fares Garrach](https://github.com/GarrachFares) 
